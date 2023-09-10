@@ -52,10 +52,15 @@ def print_results(sorted_map):
     format_string = '{{:>{}}}: {{:<{}}}\t{{:<{}}}'.format(max_count, max_ty, max_ey)
     print(format_string.format('Count', 'Training Years', 'Evaluation Years'))
     print('{}  {}\t{}'.format('-'*max_count, '-'*max_ty, '-'*max_ey))
+    number_of_networks = 0
     for item in sorted_map:
+        count = item[1]
+        number_of_networks += count
         ty = [year for year in item[0][0]]
         ey = [year for year in item[0][1]]
-        print(format_string.format(item[1], format(ty), format(ey)))
+        print(format_string.format(count, format(ty), format(ey)))
+
+    print('\nTotal number of networks: {}'.format(number_of_networks))
 
 
 def compute_max_column_lengths(sorted_map):
